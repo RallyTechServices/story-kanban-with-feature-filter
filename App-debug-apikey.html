@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Story Kanban with Feature Filter</title>
+    <script type="text/javascript">
+        var APP_BUILD_DATE = "Fri Apr 29 2016 18:14:16 GMT-0400 (EDT)";
+    </script>
+    
+    <script type="text/javascript" src="https://us1.rallydev.com/apps/2.1/sdk-debug.js?apiKey=_PUT_APIKEY_HERE_"></script>
+
+    <script type="text/javascript">
+        Rally.onReady(function() {
+            Rally.loadScripts(["src/javascript/utils/__ts-info-link.js","src/javascript/utils/__ts-logger.js","src/javascript/GridBoardAppResizer.js","src/javascript/PortfolioKanbanApp.js","src/javascript/PortfolioKanbanCard.js","src/javascript/PortfolioKanbanPolicy.js","src/javascript/RowSettingsField.js","src/javascript/Settings.js","src/javascript/portfolio-item-selector.js","src/javascript/toolbox.js"],
+	            function() {
+	                Rally.launchApp('SKFF', {
+	                    name: 'Story Kanban with Feature Filter'
+	                })
+	            }, true);
+        });
+    </script>
+<link rel="stylesheet" type="text/css" href="src/style/PortfolioKanbanApp.css"><link rel="stylesheet" type="text/css" href="src/style/app.css"><link rel="stylesheet" type="text/css" href="src/style/portfolio-item-selector.css">
+
+</head>
+<body></body>
+</html>
