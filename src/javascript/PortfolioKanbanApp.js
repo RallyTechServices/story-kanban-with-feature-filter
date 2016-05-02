@@ -375,24 +375,38 @@
                     }
                 ] : [])
                 .concat([
-                    _.merge({
-                        ptype: 'rallygridboardcustomfiltercontrol',
-                        containerConfig: {
-                            width: 42
-                        },
-                        filterChildren: false,
-                        filterControlConfig: _.merge({
-                            margin: '3 9 3 0',
-                            modelNames: this.modelNames,
-                            stateful: true,
-                            stateId: this.getScopedStateId('custom-filter-button')
-                        }, this.getFilterControlConfig()),
-                        ownerFilterControlConfig: {
-                            stateful: true,
-                            stateId: this.getScopedStateId('owner-filter')
-                        },
-                        showOwnerFilter: Rally.data.ModelTypes.areArtifacts(this.modelNames)
-                    }, this.getGridBoardCustomFilterControlConfig()),
+                    _.merge(
+                    // {
+                    //     ptype: 'rallygridboardcustomfiltercontrol',
+                    //     containerConfig: {
+                    //         width: 42
+                    //     },
+                    //     filterChildren: false,
+                    //     filterControlConfig: _.merge({
+                    //         margin: '3 9 3 0',
+                    //         modelNames: this.modelNames,
+                    //         stateful: true,
+                    //         stateId: this.getScopedStateId('custom-filter-button')
+                    //     }, this.getFilterControlConfig()),
+                    //     ownerFilterControlConfig: {
+                    //         stateful: true,
+                    //         stateId: this.getScopedStateId('owner-filter')
+                    //     },
+                    //     showOwnerFilter: Rally.data.ModelTypes.areArtifacts(this.modelNames)
+                    // }
+                    {
+                         ptype: 'rallygridboardinlinefiltercontrol',
+                         inlineFilterButtonConfig: {
+                             modelNames: this.modelNames,
+                             inlineFilterPanelConfig: {
+                                 collapsed: false,
+                                 quickFilterPanelConfig: {
+                                     fieldNames: Rally.data.ModelTypes.areArtifacts(this.modelNames)
+                                 }
+                             }
+                         }
+                     }
+                    , this.getGridBoardCustomFilterControlConfig()),
                     _.merge({
                         ptype: 'rallygridboardfieldpicker',
                         headerPosition: 'left'

@@ -3,11 +3,11 @@
 <head>
     <title>Story Kanban with Feature Filter</title>
     <!--  (c) 2015,2016 CA Technologies.  All Rights Reserved. -->
-    <!--  Build Date: Fri Apr 29 2016 18:14:16 GMT-0400 (EDT) -->
+    <!--  Build Date: Sun May 01 2016 21:16:47 GMT-0400 (EDT) -->
     
     <script type="text/javascript">
-        var APP_BUILD_DATE = "Fri Apr 29 2016 18:14:16 GMT-0400 (EDT)";
-        var CHECKSUM = 57565768386;
+        var APP_BUILD_DATE = "Sun May 01 2016 21:16:47 GMT-0400 (EDT)";
+        var CHECKSUM = 58431091664;
     </script>
     
     <script type="text/javascript" src="/apps/2.1/sdk.js"></script>
@@ -629,24 +629,38 @@ Ext.define('Rally.technicalservices.Logger',{
                     }
                 ] : [])
                 .concat([
-                    _.merge({
-                        ptype: 'rallygridboardcustomfiltercontrol',
-                        containerConfig: {
-                            width: 42
-                        },
-                        filterChildren: false,
-                        filterControlConfig: _.merge({
-                            margin: '3 9 3 0',
-                            modelNames: this.modelNames,
-                            stateful: true,
-                            stateId: this.getScopedStateId('custom-filter-button')
-                        }, this.getFilterControlConfig()),
-                        ownerFilterControlConfig: {
-                            stateful: true,
-                            stateId: this.getScopedStateId('owner-filter')
-                        },
-                        showOwnerFilter: Rally.data.ModelTypes.areArtifacts(this.modelNames)
-                    }, this.getGridBoardCustomFilterControlConfig()),
+                    _.merge(
+                    // {
+                    //     ptype: 'rallygridboardcustomfiltercontrol',
+                    //     containerConfig: {
+                    //         width: 42
+                    //     },
+                    //     filterChildren: false,
+                    //     filterControlConfig: _.merge({
+                    //         margin: '3 9 3 0',
+                    //         modelNames: this.modelNames,
+                    //         stateful: true,
+                    //         stateId: this.getScopedStateId('custom-filter-button')
+                    //     }, this.getFilterControlConfig()),
+                    //     ownerFilterControlConfig: {
+                    //         stateful: true,
+                    //         stateId: this.getScopedStateId('owner-filter')
+                    //     },
+                    //     showOwnerFilter: Rally.data.ModelTypes.areArtifacts(this.modelNames)
+                    // }
+                    {
+                         ptype: 'rallygridboardinlinefiltercontrol',
+                         inlineFilterButtonConfig: {
+                             modelNames: this.modelNames,
+                             inlineFilterPanelConfig: {
+                                 collapsed: false,
+                                 quickFilterPanelConfig: {
+                                     fieldNames: Rally.data.ModelTypes.areArtifacts(this.modelNames)
+                                 }
+                             }
+                         }
+                     }
+                    , this.getGridBoardCustomFilterControlConfig()),
                     _.merge({
                         ptype: 'rallygridboardfieldpicker',
                         headerPosition: 'left'
