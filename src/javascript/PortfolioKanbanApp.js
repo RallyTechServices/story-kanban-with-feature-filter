@@ -502,8 +502,9 @@
             if (this.getSetting('showRows') && this.getSetting('rowsField')) {
                 Ext.apply(config, {
                     rowConfig: {
-                        field: this.getSetting('rowsField'),
-                        sortDirection: 'ASC'
+                        field: this.getSetting('rowsField')
+                        ,
+                        sortDirection: 'DESC'
                     }
                 });
             }
